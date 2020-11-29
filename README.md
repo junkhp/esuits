@@ -79,3 +79,16 @@
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 *
 *
+
+# 注意
+herokuでデプロイするためには`requirements.txt`, `local_requirements.txt`以外に`django-heroku`が必要
+
+[参考URL](https://e-tec-memo.herokuapp.com/article/197/)
+## herokuでデプロイするために必要な`django-heroku`でエラーが出る．さらにいえば，`django-heroku`のインストールに必要な`psycopg2`(おそらくPostgreSQLに関するモジュール)がだめ．
+
+### 解決法
+`django-heroku`を依存パッケージ無しでインストール
+```bash
+pip install --no-deps django-heroku
+```
+`whitenoise`, `dj-database-url`, `psycopg2-binary`は`requirements.txt`でインストール済み
