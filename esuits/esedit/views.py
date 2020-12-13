@@ -45,9 +45,9 @@ class EsEditView(View):
         es_info = EntrySheetesModel.objects.get(pk=es_id)
         company_url_info = CompanyHomepageURLModel.objects.get(company=es_info.company)
         company_url = company_url_info.homepage_url
+
         # 現状デプロイ時にワードクラウドは使用しない
-        print(settings.DEBUG)
-        if not settings.DEBUG:
+        if settings.DEBUG:
             print('開発環境')
             wordcloud_path = get_wordcloud(company_url)
             company_info = {"wordcloud_path": wordcloud_path[1:]}
