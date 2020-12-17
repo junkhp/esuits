@@ -93,7 +93,7 @@ class QuestionModel(models.Model):
         EntrySheetesModel, on_delete=models.CASCADE, verbose_name='エントリーシート')
     question = models.TextField(verbose_name='質問')
     answer = models.TextField(verbose_name='', blank=True, null=True)
-    tags = models.ManyToManyField(TagModel, verbose_name='タグ名', null=True, blank=True)
+    tags = models.ManyToManyField(TagModel, verbose_name='タグ名', blank=True)
     char_num = models.IntegerField(default=0, blank=True)
     OPEN_INFO_CHOICES = [
         ('public', '公開'),

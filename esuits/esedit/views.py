@@ -43,8 +43,7 @@ class EsEditView(View):
     # 企業の情報を取得
     def _get_company_info(self, request, es_id):
         es_info = EntrySheetesModel.objects.get(pk=es_id)
-        print(es_info.company)
-        company_url_info = CompanyHomepageURLModel.objects.get(company=es_info.company)
+        company_url_info = CompanyHomepageURLModel.objects.get(pk=es_info.homepage_url.pk)
         company_url = company_url_info.homepage_url
 
         # 現状デプロイ時にワードクラウドは使用しない
@@ -200,7 +199,8 @@ def get_wordcloud_path(request):
     # CompanyHomepageURLModelにwordcloud_pathが存在している場合はその画像のパスを取り出す
     try:
         print(company_url + ' already exists')
-        wordcloud_path = CompanyHomepageURLModel.objects.get(homepage_url=company_url).word_cloud_path
+        wordcloud_path = CompanyHomepageURLModel\
+            .objects.get(homepage_url=company_url).word_cloud_path
 
     # 存在しない場合は新しくワードクラウドを作成
     except CompanyHomepageURLModel.DoesNotExist:
@@ -209,7 +209,7 @@ def get_wordcloud_path(request):
             print(wordcloud_path)
             # データベースに保存
 
-            new_word_cloud = CompanyHomepageURLModel(company=es_info.company, 
+            new_word_cloud = CompanyHomepageURLModel(company=es_info.company,
                     homepage_url=company_url, word_cloud_path=wordcloud_path)
             new_word_cloud.save()
             print('created new word cloud')
