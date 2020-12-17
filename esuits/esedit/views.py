@@ -187,7 +187,7 @@ def get_wordcloud_path(request):
     print(request.GET.get('es_group_id', ''))
     es_id = request.GET.get('es_group_id', '')
     es_info = EntrySheetesModel.objects.get(pk=es_id)
-    company_url_info = CompanyHomepageURLModel.objects.get(company=es_info.company)
+    company_url_info = CompanyHomepageURLModel.objects.get(homepage_url=es_info.homepage_url)
     company_url = company_url_info.homepage_url
 
     # 現状デプロイ時にワードクラウドは使用しない
