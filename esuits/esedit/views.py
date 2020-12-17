@@ -43,6 +43,7 @@ class EsEditView(View):
     # 企業の情報を取得
     def _get_company_info(self, request, es_id):
         es_info = EntrySheetesModel.objects.get(pk=es_id)
+        print(es_info.company)
         company_url_info = CompanyHomepageURLModel.objects.get(company=es_info.company)
         company_url = company_url_info.homepage_url
 
@@ -80,7 +81,9 @@ class EsEditView(View):
                 news_list = newsapi.get_news(es_info.company)
 
                 # 企業の情報(ワードクラウドなど)
+                print(es_id)
                 company_info = self._get_company_info(request, es_id)
+                print(company_info)
                 print(company_info)
                 # company_info = None
 

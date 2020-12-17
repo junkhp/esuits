@@ -45,6 +45,7 @@ class TagCreateView(View):
                 # タグそのものが存在する場合はそれを取得して，そうでない場合は新規作成
                 try:
                     tag = TagModel.objects.get(tag_name=tag_form.tag_name)
+                # 新規作成
                 except TagModel.DoesNotExist:
                     tag = TagModel(tag_name=tag_form.tag_name)
                     tag.save()
