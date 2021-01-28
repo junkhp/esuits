@@ -4,7 +4,7 @@ https://github.com/junkhp/esuits_junki
 # [ESUITS](https://github.com/jphacks/D_2014)のデータベースを設計し直してアプリケーションを修正
 以前ハッカソンで作成したエントリシート作成支援アプリケーションを作成したが，時間もなくデータベースの設計が割と適当だったのであらためて設計し直して適用．
 
-ESUITSデプロイ先(現在停止中) →
+ESUITSデプロイ先 →
 https://esuits.herokuapp.com/
 
  # モデルの再設計
